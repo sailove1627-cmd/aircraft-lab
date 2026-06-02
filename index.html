@@ -300,7 +300,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(400px, 0.92fr) minmax(520px, 1.08fr);
+      grid-template-columns: minmax(360px, 0.82fr) minmax(640px, 1.18fr);
       gap: 16px;
       margin-top: 16px;
       align-items: start;
@@ -356,11 +356,11 @@
     }
 
     .panel-body {
-      padding: 14px;
+      padding: 12px;
     }
 
     .selector-group + .selector-group {
-      margin-top: 16px;
+      margin-top: 12px;
     }
 
     .selector-title {
@@ -390,8 +390,8 @@
 
     .option {
       position: relative;
-      min-height: 104px;
-      padding: 9px;
+      min-height: 96px;
+      padding: 8px;
       border: 1px solid rgba(23, 114, 232, 0.16);
       border-radius: var(--radius);
       background: rgba(255, 255, 255, 0.68);
@@ -405,8 +405,8 @@
     .option-art {
       display: block;
       width: 100%;
-      height: 58px;
-      margin-bottom: 7px;
+      height: 52px;
+      margin-bottom: 6px;
     }
 
     .option-art svg {
@@ -472,12 +472,12 @@
     }
 
     .lab {
-      min-height: 690px;
+      min-height: 640px;
     }
 
     .runway {
       position: relative;
-      min-height: 480px;
+      min-height: 440px;
       padding: 16px;
       overflow: hidden;
       background:
@@ -533,7 +533,7 @@
       position: relative;
       display: grid;
       place-items: center;
-      min-height: 440px;
+      min-height: 400px;
       z-index: 2;
     }
 
@@ -666,6 +666,20 @@
       box-shadow: inset 0 0 0 2px #25c7ff, 0 12px 24px rgba(26, 104, 196, 0.16);
     }
 
+    .lab-environment-grid .environment-choice:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+      filter: grayscale(0.68);
+      transform: none;
+    }
+
+    .lab-environment-grid .environment-choice.is-locked {
+      opacity: 1;
+      filter: none;
+      border-color: rgba(255, 190, 82, 0.9);
+      box-shadow: inset 0 0 0 2px rgba(255, 190, 82, 0.88), 0 12px 24px rgba(255, 122, 102, 0.18);
+    }
+
     .component-dock {
       position: absolute;
       left: 16px;
@@ -737,7 +751,7 @@
       position: relative;
       z-index: 2;
       width: min(760px, 92%);
-      max-height: 390px;
+      max-height: 360px;
       object-fit: contain;
       border-radius: 8px;
       background: transparent;
@@ -1605,6 +1619,121 @@
       backdrop-filter: blur(12px);
     }
 
+    .mission-payload {
+      position: absolute;
+      left: 22px;
+      top: 126px;
+      z-index: 7;
+      display: none;
+      width: min(360px, calc(100% - 44px));
+      color: #fff;
+      pointer-events: none;
+    }
+
+    .flight-cinema.show.mission-medicine .payload-medicine,
+    .flight-cinema.show.mission-fuel .payload-fuel,
+    .flight-cinema.show.mission-cargo .payload-cargo {
+      display: grid;
+      animation: payloadPop 0.5s ease both;
+    }
+
+    .payload-card {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid rgba(125, 231, 255, 0.32);
+      border-radius: var(--radius);
+      background: rgba(8, 27, 56, 0.68);
+      box-shadow: 0 18px 42px rgba(3, 13, 33, 0.26);
+      backdrop-filter: blur(14px);
+    }
+
+    .payload-icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 10px;
+      font-size: 2rem;
+      font-weight: 1000;
+      line-height: 1;
+    }
+
+    .payload-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .payload-card span {
+      display: block;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.82rem;
+      line-height: 1.4;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+
+    .payload-medicine .payload-icon {
+      background: linear-gradient(135deg, #ffffff, #dff8ff);
+      color: #e63658;
+      box-shadow: inset 0 0 0 3px rgba(230, 54, 88, 0.16), 0 0 24px rgba(255, 255, 255, 0.22);
+    }
+
+    .payload-cargo .payload-icon {
+      background: linear-gradient(135deg, #f6b942, #bc6f2f);
+      color: #4a2708;
+      font-size: 1rem;
+      box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.22), 0 0 24px rgba(246, 185, 66, 0.28);
+    }
+
+    .fuel-gauge {
+      display: grid;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid rgba(255, 122, 102, 0.46);
+      border-radius: var(--radius);
+      background: rgba(56, 8, 18, 0.72);
+      box-shadow: 0 18px 42px rgba(3, 13, 33, 0.3), 0 0 30px rgba(255, 80, 76, 0.2);
+      backdrop-filter: blur(14px);
+      animation: fuelWarning 0.78s steps(2, end) infinite;
+    }
+
+    .fuel-gauge strong {
+      font-size: 1rem;
+    }
+
+    .fuel-gauge .gauge-track {
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+    }
+
+    .fuel-gauge .gauge-fill {
+      display: block;
+      width: 24%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #ff3f42, #ff9f43);
+      box-shadow: 0 0 18px rgba(255, 63, 66, 0.74);
+      animation: fuelDrain 4.2s linear both;
+    }
+
+    .fuel-gauge small {
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 900;
+    }
+
+    .flight-cinema.show.mission-medicine .cinema-distance-chip {
+      border-color: rgba(230, 54, 88, 0.55);
+    }
+
+    .flight-cinema.show.mission-cargo .cinema-distance-chip {
+      border-color: rgba(246, 185, 66, 0.62);
+    }
+
 
 
     .flight-cinema::before {
@@ -1667,6 +1796,13 @@
 
     .flight-cinema.show.outcome-success .destination-goal {
       animation: beaconPulse 1.2s ease-in-out infinite;
+      border-color: rgba(92, 255, 205, 0.8);
+      box-shadow: 0 18px 34px rgba(3, 13, 33, 0.32), 0 0 0 3px rgba(92, 255, 205, 0.22), 0 0 38px rgba(92, 255, 205, 0.32);
+    }
+
+    .flight-cinema.show.outcome-near .destination-goal,
+    .flight-cinema.show.outcome-fail .destination-goal {
+      opacity: 0.48;
     }
 
     .cinema-checkpoints {
@@ -1707,8 +1843,18 @@
 
     .flight-cinema.env-wind .cinema-weather,
     .flight-cinema.env-rain .cinema-weather,
+    .flight-cinema.env-typhoon .cinema-weather,
     .flight-cinema.env-mountain .cinema-weather {
       opacity: 1;
+    }
+
+    .flight-cinema.env-typhoon .cinema-weather::before,
+    .flight-cinema.env-typhoon .cinema-weather::after {
+      height: 3px;
+      opacity: 0.72;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.92), transparent);
+      animation-duration: 0.48s;
+      box-shadow: 0 0 22px rgba(125, 231, 255, 0.4);
     }
 
     .cinema-weather::before,
@@ -1768,7 +1914,7 @@
     .cinema-event-log {
       position: absolute;
       left: 22px;
-      top: 104px;
+      top: 254px;
       z-index: 6;
       width: min(360px, calc(100% - 44px));
       display: grid;
@@ -1789,6 +1935,8 @@
       backdrop-filter: blur(10px);
       opacity: 0;
       transform: translateX(-10px);
+      word-break: keep-all;
+      overflow-wrap: anywhere;
     }
 
     .flight-cinema.show .cinema-event-log span:nth-child(1) { animation: eventIn 0.5s ease 0.25s both; }
@@ -1885,7 +2033,7 @@
     }
 
     .flight-cinema.show.outcome-near .cinema-plane-image {
-      animation-name: flightNearDestination;
+      animation-name: flightAlternateLanding;
     }
 
     .flight-cinema.show.outcome-fail .cinema-plane-image {
@@ -1894,26 +2042,26 @@
 
     @keyframes flightToDestination {
       0% { transform: translate3d(-8vw, 13vh, 0) rotate(-1deg) scaleX(-1) scale(1.02); opacity: 1; }
-      18% { transform: translate3d(8vw, 4vh, 0) rotate(-5deg) scaleX(-1) scale(0.92); }
-      48% { transform: translate3d(29vw, -9vh, 0) rotate(-8deg) scaleX(-1) scale(0.7); }
-      78% { transform: translate3d(49vw, -16vh, 0) rotate(-3deg) scaleX(-1) scale(0.48); opacity: 1; }
-      100% { transform: translate3d(58vw, -9vh, 0) rotate(1deg) scaleX(-1) scale(0.38); opacity: 0.98; }
+      18% { transform: translate3d(9vw, 4vh, 0) rotate(-5deg) scaleX(-1) scale(0.92); }
+      48% { transform: translate3d(31vw, -10vh, 0) rotate(-8deg) scaleX(-1) scale(0.68); }
+      78% { transform: translate3d(51vw, -15vh, 0) rotate(-3deg) scaleX(-1) scale(0.47); opacity: 1; }
+      100% { transform: translate3d(63vw, -17vh, 0) rotate(0deg) scaleX(-1) scale(0.36); opacity: 0.98; }
     }
 
-    @keyframes flightNearDestination {
+    @keyframes flightAlternateLanding {
       0% { transform: translate3d(-8vw, 13vh, 0) rotate(-1deg) scaleX(-1) scale(1.02); opacity: 1; }
       20% { transform: translate3d(8vw, 3vh, 0) rotate(7deg) scaleX(-1) scale(0.92); }
-      42% { transform: translate3d(24vw, 7vh, 0) rotate(-11deg) scaleX(-1) scale(0.76); }
-      68% { transform: translate3d(41vw, -7vh, 0) rotate(8deg) scaleX(-1) scale(0.56); }
-      100% { transform: translate3d(54vw, 5vh, 0) rotate(3deg) scaleX(-1) scale(0.42); opacity: 0.96; }
+      42% { transform: translate3d(25vw, 8vh, 0) rotate(-12deg) scaleX(-1) scale(0.76); }
+      68% { transform: translate3d(43vw, 13vh, 0) rotate(9deg) scaleX(-1) scale(0.56); }
+      100% { transform: translate3d(60vw, 20vh, 0) rotate(2deg) scaleX(-1) scale(0.42); opacity: 0.96; }
     }
 
     @keyframes flightWrongLanding {
       0% { transform: translate3d(-8vw, 13vh, 0) rotate(-1deg) scaleX(-1) scale(1.02); opacity: 1; }
       24% { transform: translate3d(8vw, 4vh, 0) rotate(-5deg) scaleX(-1) scale(0.9); }
-      50% { transform: translate3d(26vw, 6vh, 0) rotate(12deg) scaleX(-1) scale(0.74); }
-      78% { transform: translate3d(43vw, 15vh, 0) rotate(18deg) scaleX(-1) scale(0.56); }
-      100% { transform: translate3d(55vw, 23vh, 0) rotate(4deg) scaleX(-1) scale(0.47); opacity: 0.96; }
+      50% { transform: translate3d(25vw, 7vh, 0) rotate(14deg) scaleX(-1) scale(0.74); }
+      78% { transform: translate3d(43vw, 18vh, 0) rotate(20deg) scaleX(-1) scale(0.56); }
+      100% { transform: translate3d(61vw, 24vh, 0) rotate(3deg) scaleX(-1) scale(0.43); opacity: 0.96; }
     }
 
     @keyframes beaconPulse {
@@ -2004,6 +2152,21 @@
       30% { transform: translate3d(8vw, 4vh, 0) rotate(-6deg) scale(0.94); }
       58% { transform: translate3d(25vw, -2vh, 0) rotate(-3deg) scale(0.8); }
       100% { transform: translate3d(48vw, -8vh, 0) rotate(-5deg) scale(0.58); opacity: 0.92; }
+    }
+
+    @keyframes payloadPop {
+      from { opacity: 0; transform: translateY(-8px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes fuelWarning {
+      0%, 100% { border-color: rgba(255, 122, 102, 0.42); filter: brightness(1); }
+      50% { border-color: rgba(255, 43, 43, 1); filter: brightness(1.22); }
+    }
+
+    @keyframes fuelDrain {
+      from { width: 30%; }
+      to { width: 9%; }
     }
 
     @keyframes drawGraph {
@@ -2158,6 +2321,16 @@
         bottom: 360px;
       }
 
+      .mission-payload {
+        top: 132px;
+        width: min(360px, calc(100% - 44px));
+      }
+
+      .cinema-event-log {
+        top: 274px;
+        width: min(360px, calc(100% - 44px));
+      }
+
       .time-graph {
         right: 22px;
         bottom: 176px;
@@ -2182,6 +2355,45 @@
       .stage-grid,
       .lab-environment-grid {
         grid-template-columns: 1fr;
+      }
+
+      .mission-payload {
+        left: 14px;
+        top: 126px;
+        width: calc(100% - 28px);
+      }
+
+      .payload-card {
+        grid-template-columns: 46px 1fr;
+        gap: 9px;
+        padding: 10px;
+      }
+
+      .payload-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.55rem;
+      }
+
+      .payload-cargo .payload-icon {
+        font-size: 0.78rem;
+      }
+
+      .payload-card strong,
+      .fuel-gauge strong {
+        font-size: 0.88rem;
+      }
+
+      .payload-card span,
+      .fuel-gauge small {
+        font-size: 0.74rem;
+        line-height: 1.34;
+      }
+
+      .cinema-event-log {
+        left: 14px;
+        top: 258px;
+        width: calc(100% - 28px);
       }
 
       .score-ring {
@@ -2226,7 +2438,7 @@
           </div>
         </div>
         <h1 id="welcomeTitle">비행기 연구소에 오신 걸 환영합니다.</h1>
-        <p>먼저 실험 기체의 이름, 미션, 비행 환경을 정하세요. 그 다음 설계실에서 날개, 엔진, 재료를 조합해 시험 비행을 진행합니다.</p>
+        <p>먼저 실험 기체의 이름과 미션을 정하세요. 그 다음 설계실에서 날개, 엔진, 재료를 조합해 시험 비행을 진행합니다.</p>
 
         <div class="welcome-form">
           <div class="name-input">
@@ -2236,10 +2448,6 @@
           <div class="welcome-missions">
             <span>미션을 선택하세요</span>
             <div class="welcome-mission-grid" id="welcomeMissionGrid"></div>
-          </div>
-          <div class="welcome-environments">
-            <span>비행 환경을 선택하세요</span>
-            <div class="welcome-environment-grid" id="welcomeEnvironmentGrid"></div>
           </div>
           <button class="primary" id="enterLab" type="button">설계실 입장</button>
         </div>
@@ -2267,7 +2475,6 @@
       <div class="status-pills" aria-label="현재 연구 상태">
         <span class="pill" id="planeNamePill">AL-SEA</span>
         <span class="pill" id="missionPill">미션 준비</span>
-        <span class="pill" id="environmentPill">환경 준비</span>
         <span class="pill" id="attemptPill">시험 0회</span>
       </div>
     </header>
@@ -2295,9 +2502,10 @@
           </div>
 
           <div class="selector-group">
-            <div class="selector-title"><span>환경 선택</span><span>비행 루트에 반영</span></div>
+            <div class="selector-title"><span>환경 선택</span><span>시험 비행에 반영</span></div>
             <div class="lab-environment-grid" id="labEnvironmentGrid"></div>
           </div>
+
         </div>
       </section>
 
@@ -2457,11 +2665,6 @@
               <p>도시 병원까지 빠르게 도착해야 합니다.</p>
               <ul class="target-list" id="targetList"></ul>
             </article>
-            <div class="select-row">
-              <label for="sceneSelect">연구소 배경</label>
-              <select id="sceneSelect"></select>
-            </div>
-
             <div class="button-row">
               <button class="primary" id="testButton" type="button">
                 <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
@@ -2561,6 +2764,27 @@
       <div class="cinema-progress"><i></i></div>
     </div>
     <div class="cinema-distance-chip" id="cinemaDistanceChip">항로 계산 중</div>
+    <div class="mission-payload payload-card payload-medicine" aria-hidden="true">
+      <div class="payload-icon">+</div>
+      <div>
+        <strong>의약품 긴급 배송</strong>
+        <span>냉장 보관 의약품 탑재 · 빠른 도착이 핵심입니다.</span>
+      </div>
+    </div>
+    <div class="mission-payload payload-fuel" aria-hidden="true">
+      <div class="fuel-gauge">
+        <strong>연료 부족 경고</strong>
+        <div class="gauge-track"><i class="gauge-fill"></i></div>
+        <small>LOW FUEL · 남은 연료를 아껴 비행하세요</small>
+      </div>
+    </div>
+    <div class="mission-payload payload-card payload-cargo" aria-hidden="true">
+      <div class="payload-icon">BOX</div>
+      <div>
+        <strong>산악 물자 적재</strong>
+        <span>구호 물자 박스 탑재 · 양력과 안정성이 중요합니다.</span>
+      </div>
+    </div>
     <div class="cinema-event-log" id="cinemaEventLog" aria-hidden="true">
       <span>이륙 허가 대기 중</span>
       <span>체크포인트 통과 대기 중</span>
@@ -2596,7 +2820,7 @@
     </div>
     <div class="cinema-landmark airport-start"><small>START</small><span>출발 공항</span></div>
     <div class="cinema-landmark destination-goal"><small>GOAL</small><span id="cinemaDestinationName">도착지</span></div>
-    <div class="cinema-landmark emergency-zone"><small>ALT</small><span>임시 착륙지</span></div>
+    <div class="cinema-landmark emergency-zone"><small>OFF ROUTE</small><span id="cinemaEmergencyName">엉뚱한 착륙지</span></div>
     <div class="cinema-mission-result" id="cinemaMissionResult" aria-live="polite">
       <div class="result-badge" id="cinemaResultBadge">성공</div>
       <h2 id="cinemaResultTitle">미션 성공</h2>
@@ -2725,6 +2949,13 @@
           hero: "assets/env-rain.png",
           mod: { distance: 0.82, time: 0.86, stability: 0.84, fuel: 0.78, speed: 0.84, drag: 1.28 }
         },
+        typhoon: {
+          label: "태풍",
+          summary: "구조 임무 전용 악천후입니다.",
+          art: "assets/env-rain.png",
+          hero: "assets/env-rain.png",
+          mod: { distance: 0.88, time: 0.9, stability: 0.82, fuel: 0.84, speed: 0.88, drag: 1.22 }
+        },
         mountain: {
           label: "산악 지형",
           summary: "높은 양력과 안정적인 조종이 필요합니다.",
@@ -2763,30 +2994,30 @@
         medicine: {
           label: "의약품 긴급 배송",
           desc: "도시 병원까지 빠르게 도착해야 합니다. 속도와 안정성을 함께 챙기세요.",
-          targets: ["속도 70 이상", "안정성 60 이상", "거리 260 km 이상"],
+          targets: ["속도 66 이상", "안정성 55 이상", "거리 220 km 이상"],
           weights: { speed: 0.36, stability: 0.25, distance: 0.25, fuel: 0.14 },
-          thresholds: { speed: 70, stability: 60, distance: 260 }
+          thresholds: { speed: 66, stability: 55, distance: 220 }
         },
         fuel: {
           label: "연료 부족 비행",
           desc: "남은 연료가 적습니다. 연료 효율과 낮은 항력이 핵심입니다.",
-          targets: ["연료 효율 72 이상", "항력 62 이하", "시간 80분 이상"],
+          targets: ["연료 효율 66 이상", "항력 70 이하", "시간 65분 이상"],
           weights: { fuel: 0.42, dragSave: 0.24, time: 0.2, distance: 0.14 },
-          thresholds: { fuel: 72, dragMax: 62, time: 80 }
+          thresholds: { fuel: 66, dragMax: 70, time: 65 }
         },
         storm: {
           label: "태풍 속 구조 임무",
           desc: "거친 날씨 속에서 구조 지점까지 안전하게 접근해야 합니다.",
-          targets: ["안정성 75 이상", "내구성 68 이상", "거리 220 km 이상"],
+          targets: ["안정성 65 이상", "내구성 60 이상", "거리 190 km 이상"],
           weights: { stability: 0.42, durability: 0.22, distance: 0.2, fuel: 0.16 },
-          thresholds: { stability: 75, durability: 68, distance: 220 }
+          thresholds: { stability: 65, durability: 60, distance: 190 }
         },
         cargo: {
           label: "산악 지역 물자 수송",
           desc: "높은 고도와 좁은 착륙 지점을 지나 물자를 운반합니다.",
-          targets: ["양력 74 이상", "안정성 70 이상", "무게 62 이하"],
+          targets: ["양력 65 이상", "안정성 62 이상", "무게 72 이하"],
           weights: { lift: 0.34, stability: 0.28, weightSave: 0.2, distance: 0.18 },
-          thresholds: { lift: 74, stability: 70, weightMax: 62 }
+          thresholds: { lift: 65, stability: 62, weightMax: 72 }
         }
       }
     };
@@ -2811,7 +3042,6 @@
 
     const el = {
       welcomeMissionGrid: document.querySelector("#welcomeMissionGrid"),
-      welcomeEnvironmentGrid: document.querySelector("#welcomeEnvironmentGrid"),
       labEnvironmentGrid: document.querySelector("#labEnvironmentGrid"),
       planeNameInput: document.querySelector("#planeNameInput"),
       enterLab: document.querySelector("#enterLab"),
@@ -2835,7 +3065,6 @@
       dockEngineLabel: document.querySelector("#dockEngineLabel"),
       dockMaterialImg: document.querySelector("#dockMaterialImg"),
       dockMaterialLabel: document.querySelector("#dockMaterialLabel"),
-      sceneSelect: document.querySelector("#sceneSelect"),
       missionCard: document.querySelector("#missionCard"),
       targetList: document.querySelector("#targetList"),
       testButton: document.querySelector("#testButton"),
@@ -2853,6 +3082,7 @@
       cinemaResultDesc: document.querySelector("#cinemaResultDesc"),
       cinemaCloseButton: document.querySelector("#cinemaCloseButton"),
       cinemaDestinationName: document.querySelector("#cinemaDestinationName"),
+      cinemaEmergencyName: document.querySelector("#cinemaEmergencyName"),
       cinemaDistanceChip: document.querySelector("#cinemaDistanceChip"),
       cinemaEventLog: document.querySelector("#cinemaEventLog"),
       timeGraphLabel: document.querySelector("#timeGraphLabel"),
@@ -2873,7 +3103,6 @@
       costReadout: document.querySelector("#costReadout"),
       planeNamePill: document.querySelector("#planeNamePill"),
       missionPill: document.querySelector("#missionPill"),
-      environmentPill: document.querySelector("#environmentPill"),
       attemptPill: document.querySelector("#attemptPill"),
       toast: document.querySelector("#toast")
     };
@@ -2902,16 +3131,6 @@
       updateWelcomeMissions();
     }
 
-    function renderWelcomeEnvironments() {
-      el.welcomeEnvironmentGrid.innerHTML = Object.entries(DATA.environments).map(([key, environment]) => `
-        <button class="environment-choice" type="button" data-environment="${key}" aria-pressed="false">
-          <strong>${environment.label}</strong>
-          <span>${environment.summary}</span>
-        </button>
-      `).join("");
-      updateWelcomeEnvironments();
-    }
-
     function renderLabEnvironments() {
       el.labEnvironmentGrid.innerHTML = Object.entries(DATA.environments).map(([key, environment]) => `
         <button class="environment-choice" type="button" data-environment="${key}" aria-pressed="false" style="background-image:linear-gradient(180deg, rgba(4, 20, 45, .12), rgba(4, 20, 45, .72)), url('${environment.art}')">
@@ -2919,7 +3138,7 @@
           <span>${environment.summary}</span>
         </button>
       `).join("");
-      updateWelcomeEnvironments();
+      updateLabEnvironments();
     }
 
     function updateWelcomeMissions() {
@@ -2930,11 +3149,17 @@
       });
     }
 
-    function updateWelcomeEnvironments() {
+    function updateLabEnvironments() {
       document.querySelectorAll(".environment-choice").forEach(button => {
         const active = state.environment === button.dataset.environment;
+        const locked = state.mission === "storm";
+        const isTyphoon = button.dataset.environment === "typhoon";
+        const allowed = locked ? isTyphoon : !isTyphoon;
         button.classList.toggle("active", active);
+        button.classList.toggle("is-locked", locked && active);
+        button.disabled = !allowed;
         button.setAttribute("aria-pressed", String(active));
+        button.title = locked && !allowed ? "태풍 속 구조 임무에서는 태풍 환경으로 고정됩니다." : !locked && isTyphoon ? "태풍은 구조 임무 전용 환경입니다." : "";
       });
     }
 
@@ -2962,10 +3187,6 @@
         plastic: '<rect x="42" y="18" width="86" height="60" rx="9" fill="#f3f6f7" stroke="#cfd6dc" stroke-width="2"/><path d="M50 70 118 22M42 42h86" stroke="#ffffff" stroke-width="5" opacity=".72"/><path d="M52 28h66v40H52Z" fill="none" stroke="#e6eaed" stroke-width="2"/>'
       };
       return `<svg viewBox="0 0 170 96">${shapes[key]}</svg>`;
-    }
-
-    function renderSelect(select, source) {
-      select.innerHTML = Object.entries(source).map(([key, item]) => `<option value="${key}">${item.label}</option>`).join("");
     }
 
     function computeBaseStats() {
@@ -3028,9 +3249,9 @@
         weightSave: clamp(100 - stats.weight)
       };
       const total = Object.entries(mission.weights).reduce((sum, [key, weight]) => sum + scores[key] * weight, 0);
-      const costPenalty = stats.cost > 82 ? 3 : 0;
-      const noisePenalty = stats.noise > 82 && state.mission !== "medicine" ? 2 : 0;
-      return clamp(total - costPenalty - noisePenalty);
+      const costPenalty = stats.cost > 88 ? 2 : 0;
+      const noisePenalty = stats.noise > 90 && state.mission !== "medicine" ? 1 : 0;
+      return clamp(total + 8 - costPenalty - noisePenalty);
     }
 
 
@@ -3045,27 +3266,51 @@
       return names[missionKey] || "도착지";
     }
 
+    function wrongLandingName() {
+      const byEnvironment = {
+        clear: ["낯선 해안 초지", "무인 관측 활주로", "외딴 섬 정비장"],
+        wind: ["바람골 임시 평지", "폐쇄된 풍력 관측소", "강풍 계곡 착륙장"],
+        rain: ["안개 낀 호수 기슭", "침수된 예비 활주로", "구름 아래 습지"],
+        typhoon: ["태풍권 외곽 암초", "무너진 방파제 옆 평지", "폭풍우 속 임시 구조장"],
+        mountain: ["외딴 산악 분지", "절벽 아래 임시 헬리패드", "고개 너머 암석 평지"]
+      };
+      const list = byEnvironment[state.environment] || byEnvironment.clear;
+      const code = `${state.wing}-${state.engine}-${state.material}-${state.mission}`.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
+      return list[code % list.length];
+    }
+
+    function syncMissionEnvironment() {
+      if (state.mission === "storm") {
+        state.environment = "typhoon";
+        return;
+      }
+      if (state.environment === "typhoon") {
+        state.environment = "clear";
+      }
+    }
+
     function evaluateMissionOutcome(result) {
       const misses = missionMisses(result.mission, result.adjusted, result.distance, result.time);
       const score = result.score;
       let level = "fail";
       let badge = "재도전";
       let title = "미션 재도전";
-      let desc = "도착지를 벗어나 임시 착륙지에 착륙했습니다. 설계를 바꾸어 다시 시험해 보세요.";
+      const wrongPlace = wrongLandingName();
+      let desc = `항로를 벗어나 ${wrongPlace}에 착륙했습니다. 설계를 바꾸어 다시 시험해 보세요.`;
 
-      if (misses.length === 0 || (score >= 76 && misses.length <= 1)) {
+      if (misses.length === 0 || (score >= 68 && misses.length <= 2)) {
         level = "success";
         badge = "성공";
         title = "미션 성공";
-        desc = `${missionDestinationName(state.mission)}까지 정확히 도착했습니다. 설계 목표와 환경 조건이 잘 맞았습니다.`;
-      } else if (score >= 58 && misses.length <= 2) {
+        desc = `${missionDestinationName(state.mission)} 활주로까지 정확히 접근해 착륙했습니다. 설계 목표와 환경 조건이 잘 맞았습니다.`;
+      } else if (score >= 48 && misses.length <= 3) {
         level = "near";
         badge = "근접";
-        title = "도착지 근처 비상착륙";
-        desc = `${missionDestinationName(state.mission)} 근처까지 접근했지만 ${misses.join(", ")} 조건이 부족해 완전한 성공은 아닙니다.`;
+        title = "항로 이탈 착륙";
+        desc = `${missionDestinationName(state.mission)}로 향했지만 ${misses.join(", ")} 조건이 부족해 ${wrongPlace}에 착륙했습니다.`;
       }
 
-      return { level, badge, title, desc, misses };
+      return { level, badge, title, desc, misses, wrongPlace };
     }
 
     function graphPathForOutcome(outcomeLevel) {
@@ -3075,6 +3320,7 @@
     }
 
     function updatePreview() {
+      syncMissionEnvironment();
       const wing = DATA.wings[state.wing];
       const engine = DATA.engines[state.engine];
       const material = DATA.materials[state.material];
@@ -3104,14 +3350,12 @@
       el.dockEngineLabel.textContent = engine.label;
       el.dockMaterialImg.src = material.art;
       el.dockMaterialLabel.textContent = material.label;
-      el.sceneSelect.value = state.scene;
       document.documentElement.style.setProperty("--scene-image", `url("${DATA.scenes[state.scene].image}")`);
       document.documentElement.style.setProperty("--welcome-image", `url("${environment.hero}")`);
       document.documentElement.style.setProperty("--flight-image", `url("${environment.hero || "assets/env-clear.png"}")`);
       el.missionPill.textContent = DATA.missions[state.mission].label;
-      el.environmentPill.textContent = environment.label;
       updateWelcomeMissions();
-      updateWelcomeEnvironments();
+      updateLabEnvironments();
 
       setBar("Lift", stats.lift);
       setBar("Stability", stats.stability);
@@ -3223,8 +3467,17 @@
       const mission = DATA.missions[state.mission];
       const env = DATA.environments[state.environment];
       el.missionCard.querySelector("h3").textContent = mission.label;
-      el.missionCard.querySelector("p").textContent = `${mission.desc} 현재 환경: ${env.summary}`;
+      const lockNote = state.mission === "storm" ? " 이 미션은 태풍 환경으로 고정됩니다." : "";
+      el.missionCard.querySelector("p").textContent = `${mission.desc} 현재 시험 환경: ${env.label} - ${env.summary}${lockNote}`;
       el.targetList.innerHTML = mission.targets.map(target => `<li><span>${target}</span><span>목표</span></li>`).join("");
+    }
+
+    function missionFlightEvent(stats) {
+      if (state.mission === "medicine") return "의약품 냉장함 안정 상태 확인";
+      if (state.mission === "fuel") return `연료 게이지 위험 · 효율 ${round(stats.efficiency)}`;
+      if (state.mission === "storm") return `태풍권 진입 · 안정성 ${round(stats.stability)}`;
+      if (state.mission === "cargo") return `물자 박스 고정 · 양력 ${round(stats.lift)}`;
+      return `체크포인트 통과 · 안정성 ${round(stats.stability)}`;
     }
 
     function runFlightTest() {
@@ -3272,22 +3525,23 @@
       el.cinemaLift.textContent = `양력 ${round(stats.lift)} / 100`;
       el.cinemaMission.textContent = DATA.missions[state.mission].label;
       if (el.cinemaDestinationName) el.cinemaDestinationName.textContent = missionDestinationName(state.mission);
+      if (el.cinemaEmergencyName) el.cinemaEmergencyName.textContent = outcome.wrongPlace || wrongLandingName();
       if (el.cinemaDistanceChip) {
         el.cinemaDistanceChip.textContent = `${round(result.distance)}km 항로 · ${formatFlightClock(result.time)} 예상`;
       }
       if (el.cinemaEventLog) {
         const destination = missionDestinationName(state.mission);
         const thrust = round(clamp(stats.speed * 0.82 + (100 - stats.drag) * 0.18));
-        const finalText = outcome.level === "success" ? `${destination} 착륙 성공` : outcome.level === "near" ? `${destination} 근처 비상착륙` : "도착지 이탈 · 임시 착륙지 접근";
+        const finalText = outcome.level === "success" ? `${destination} 착륙 성공` : `${outcome.wrongPlace || wrongLandingName()} 착륙 · 목표 지점 이탈`;
         el.cinemaEventLog.innerHTML = `
           <span>출발 공항 이륙 · 추진력 ${thrust}</span>
-          <span>체크포인트 통과 · 안정성 ${round(stats.stability)}</span>
+          <span>${missionFlightEvent(stats)}</span>
           <span>${finalText}</span>
         `;
       }
       if (el.timeGraphLine) el.timeGraphLine.setAttribute("d", graphPathForOutcome(outcome.level));
       startFlightClock(result.time);
-      el.flightCinema.classList.remove("show", "finished", "mission-medicine", "mission-fuel", "mission-storm", "mission-cargo", "outcome-success", "outcome-near", "outcome-fail", "env-clear", "env-wind", "env-rain", "env-mountain");
+      el.flightCinema.classList.remove("show", "finished", "mission-medicine", "mission-fuel", "mission-storm", "mission-cargo", "outcome-success", "outcome-near", "outcome-fail", "env-clear", "env-wind", "env-rain", "env-typhoon", "env-mountain");
       void el.flightCinema.offsetWidth;
       el.flightCinema.classList.add("show", `mission-${state.mission}`, `outcome-${outcome.level}`, `env-${state.environment}`);
       el.flightCinema.setAttribute("aria-hidden", "false");
@@ -3298,7 +3552,7 @@
         cancelAnimationFrame(cinemaTimerFrame);
         cinemaTimerFrame = null;
       }
-      el.flightCinema.classList.remove("show", "finished", "outcome-success", "outcome-near", "outcome-fail", "env-clear", "env-wind", "env-rain", "env-mountain");
+      el.flightCinema.classList.remove("show", "finished", "outcome-success", "outcome-near", "outcome-fail", "env-clear", "env-wind", "env-rain", "env-typhoon", "env-mountain");
       el.flightCinema.setAttribute("aria-hidden", "true");
       window.setTimeout(() => {
         el.runway.classList.remove("route-active", "route-success", "route-wobbly", "route-fail");
@@ -3564,13 +3818,7 @@
         const button = event.target.closest(".mission-choice");
         if (!button) return;
         state.mission = button.dataset.mission;
-        updatePreview();
-      });
-
-      el.welcomeEnvironmentGrid.addEventListener("click", event => {
-        const button = event.target.closest(".environment-choice");
-        if (!button) return;
-        state.environment = button.dataset.environment;
+        syncMissionEnvironment();
         updatePreview();
       });
 
@@ -3597,12 +3845,11 @@
       document.addEventListener("click", event => {
         const button = event.target.closest(".environment-choice");
         if (!button) return;
+        if (button.disabled || state.mission === "storm") {
+          toast("태풍 속 구조 임무에서는 태풍 환경으로 고정됩니다.");
+          return;
+        }
         state.environment = button.dataset.environment;
-        updatePreview();
-      });
-
-      el.sceneSelect.addEventListener("change", event => {
-        state.scene = event.target.value;
         updatePreview();
       });
 
@@ -3619,12 +3866,10 @@
 
     function init() {
       renderWelcomeMissions();
-      renderWelcomeEnvironments();
       renderOptions("wing", el.wingOptions);
       renderOptions("engine", el.engineOptions);
       renderOptions("material", el.materialOptions);
       renderLabEnvironments();
-      renderSelect(el.sceneSelect, DATA.scenes);
       bindEvents();
       updatePreview();
       resetResultPanel();
